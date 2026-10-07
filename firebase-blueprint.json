@@ -1,0 +1,142 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Registered member profile",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Unique user ID",
+          "maxLength": 64
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address",
+          "maxLength": 100
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User full name",
+          "maxLength": 50
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Account registration date",
+          "maxLength": 50
+        }
+      },
+      "required": ["userId", "email", "displayName", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase order for raw meal food",
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string",
+          "description": "Readable order identifier",
+          "maxLength": 64
+        },
+        "userId": {
+          "type": "string",
+          "description": "Associated member user ID",
+          "maxLength": 64
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "Associated member email",
+          "maxLength": 100
+        },
+        "planId": {
+          "type": "string",
+          "description": "Selected product plan ID",
+          "maxLength": 32
+        },
+        "productName": {
+          "type": "string",
+          "description": "Product name",
+          "maxLength": 100
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Quantity purchased"
+        },
+        "unitPrice": {
+          "type": "number",
+          "description": "Unit price in KRW"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Total payment amount in KRW"
+        },
+        "recipientName": {
+          "type": "string",
+          "description": "Customer recipient name",
+          "maxLength": 50
+        },
+        "phone": {
+          "type": "string",
+          "description": "Customer contact phone number",
+          "maxLength": 30
+        },
+        "address": {
+          "type": "string",
+          "description": "Shipping base address",
+          "maxLength": 200
+        },
+        "detailAddress": {
+          "type": "string",
+          "description": "Shipping detailed address",
+          "maxLength": 200
+        },
+        "deliveryNote": {
+          "type": "string",
+          "description": "Delivery instructions",
+          "maxLength": 200
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "Payment method chosen",
+          "enum": ["card", "transfer", "easy", "naver", "toss", "kakao"]
+        },
+        "status": {
+          "type": "string",
+          "description": "Order processing status",
+          "enum": ["pending", "preparing", "shipped", "completed", "cancelled"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp in ISO string",
+          "maxLength": 50
+        }
+      },
+      "required": [
+        "orderId",
+        "productName",
+        "quantity",
+        "totalAmount",
+        "recipientName",
+        "phone",
+        "address",
+        "paymentMethod",
+        "status",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Registered member profiles collection"
+    },
+    "/orders/{orderId}": {
+      "schema": {
+        "$ref": "#/entities/Order"
+      },
+      "description": "Customer raw food orders collection"
+    }
+  }
+}

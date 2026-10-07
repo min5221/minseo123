@@ -1,0 +1,6 @@
+{
+  "name": "하루한잔 생식 | 자연을 담은 간편한 한끼",
+  "description": "국내산 50가지 곡물과 채소로 정직하게 담아낸 간편한 한끼 생식. 물이나 우유에 타서 마시는 자연 그대로의 식사.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
